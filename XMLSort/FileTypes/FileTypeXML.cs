@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace XMLSort.FileTypes
 {
-    interface IFileIN
+    class FileTypeXML : IFileIN
     {
-      
-        void ProcessFile(string PathToFile);
-
+        public void ProcessFile(string PathToFile)
+        {
+            
+        }
     }
 }

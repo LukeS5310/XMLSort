@@ -66,6 +66,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FileTypes\FileTypeResolver.cs" />
+    <Compile Include="FileTypes\FileTypeUnknown.cs" />
+    <Compile Include="FileTypes\FileTypeXML.cs" />
+    <Compile Include="FileTypes\FileTypeZIP.cs" />
     <Compile Include="INIT\StartupFolderAnalyzer.cs" />
     <Compile Include="FileTypes\IFileIN.cs" />
     <Compile Include="INPUT\FileGrabber.cs" />

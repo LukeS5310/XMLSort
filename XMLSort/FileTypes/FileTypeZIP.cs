@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace XMLSort.FileTypes
 {
-    interface IFileIN
+    class FileTypeZIP : IFileIN
     {
-      
-        void ProcessFile(string PathToFile);
-
+        public void ProcessFile(string PathToFile)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

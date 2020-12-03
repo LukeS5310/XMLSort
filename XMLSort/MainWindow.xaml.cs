@@ -35,5 +35,11 @@ namespace XMLSort
                 BTN_START.IsEnabled = true;
             }
         }
+
+        private void BTN_START_Click(object sender, RoutedEventArgs e)
+        {
+            INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
+            TestGrabber.GetFiles();
+        }
     }
 }

@@ -17,8 +17,11 @@ namespace XMLSort.INPUT
             }
 
             FileInfo[] INFiles = new DirectoryInfo(INDirPath).GetFiles();
-
-
+            FileTypes.FileTypeResolver Resolver = new FileTypes.FileTypeResolver();
+            foreach (FileInfo INFile in INFiles)
+            {
+                Resolver.ResolveFileType(INFile.FullName).ProcessFile(INFile.FullName);
+            }
         }
 
     }
