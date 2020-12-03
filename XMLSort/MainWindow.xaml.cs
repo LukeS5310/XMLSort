@@ -38,6 +38,10 @@ namespace XMLSort
 
         private void BTN_START_Click(object sender, RoutedEventArgs e)
         {
+            if (Globs.CurrentXMLPref == Globs.PrefferedXMLType.TYPE_UNDEFINED)
+            {
+                new Window1().Show();
+            }
             INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
             TestGrabber.GetFiles();
         }
