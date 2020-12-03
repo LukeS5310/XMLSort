@@ -1,4 +1,5 @@
 ﻿<Window x:Class="XMLSort.MainWindow"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,10 +8,10 @@
         mc:Ignorable="d"
         Title="XML Sort 1.0" Height="120" Width="240" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
-        <Button x:Name="BTN_START" Content="СТАРТ" Margin="0,40,0,0" VerticalAlignment="Center" Width="75" HorizontalAlignment="Center" IsEnabled="False" Click="BTN_START_Click"/>
-        <ProgressBar x:Name="PB_Progress" HorizontalAlignment="Center" Height="15" Margin="0,0,0,7" VerticalAlignment="Center" Width="200"/>
-        <Label HorizontalContentAlignment="Center" x:Name="LBL_Status" Content="LBL_Status" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Center" Width="220" Height="25"/>
-        <TextBox x:Name="TB_PartNum" HorizontalAlignment="Left" Height="23" Margin="17,4,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="40"/>
-
+        <Button x:Name="BTN_START" Content="СТАРТ" Margin="0,40,0,-15" VerticalAlignment="Center" Width="75" HorizontalAlignment="Center" IsEnabled="False" Click="BTN_START_Click"/>
+        <ProgressBar x:Name="PB_Progress" HorizontalAlignment="Center" Height="15" Margin="0,0,0,-2" VerticalAlignment="Center" Width="200"/>
+        <Label HorizontalContentAlignment="Center" x:Name="LBL_Status" Content="LBL_Status" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="220" Height="25"/>
+        <xctk:IntegerUpDown x:Name="NUD_PartNum" Value="1" Width="40" Height="26" Margin="0,0,159,55" TextAlignment="Left" Text="99" Maximum="99" Minimum="1" HorizontalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" AllowTextInput="False" HorizontalAlignment="Center" VerticalAlignment="Center" ClipToBounds="True" Padding="0" ScrollViewer.CanContentScroll="True" ValueChanged="NUD_PartNum_ValueChanged" />
+        <Label x:Name="label" Content="Номер порции отправки" HorizontalAlignment="Center" Margin="62,6,17,61" VerticalAlignment="Center" Width="155" Height="24"/>
     </Grid>
 </Window>

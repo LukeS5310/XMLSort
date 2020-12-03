@@ -15,5 +15,6 @@ namespace XMLSort
             TYPE_UNDEFINED
         }
         public static PrefferedXMLType CurrentXMLPref = PrefferedXMLType.TYPE_UNDEFINED;
+        public static int PartNum = 1;
     }
 }

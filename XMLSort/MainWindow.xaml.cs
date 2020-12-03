@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace XMLSort
 {
@@ -44,6 +45,12 @@ namespace XMLSort
             }
             INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
             TestGrabber.GetFiles();
+        }
+
+        private void NUD_PartNum_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+           Globs.PartNum = NUD_PartNum.Value ?? 0;
+           
         }
     }
 }
