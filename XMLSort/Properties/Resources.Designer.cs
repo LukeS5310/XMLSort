@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace XMLSort.Properties
-{
-
-
+namespace XMLSort.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,52 +19,108 @@ namespace XMLSort.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("XMLSort.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1;М;1
+        ///7;МО;1
+        ///8;МО;2
+        ///9;МО;3
+        ///3;МО;4
+        ///21;МО;5
+        ///5;МО;6
+        ///4;МО;7
+        ///36;МО;8
+        ///29;МО;9
+        ///7;МО;10
+        ///3;МО;11
+        ///12;МО;12
+        ///41;МО;13
+        ///27;МО;16
+        ///17;МО;17
+        ///35;МО;18
+        ///1;МО;20
+        ///14;МО;21
+        ///9;МО;22
+        ///5;МО;23
+        ///9;МО;24
+        ///37;МО;25
+        ///3;МО;27
+        ///34;МО;28
+        ///6;МО;29
+        ///20;МО;30
+        ///13;МО;31
+        ///2;МО;32
+        ///24;МО;33
+        ///42;МО;34
+        ///30;МО;35
+        ///4;МО;36
+        ///11;МО;37
+        ///16;МО;38
+        ///11;МО;39
+        ///15;МО;40
+        ///7;МО;41
+        ///2;МО;42
+        ///11;МО;43
+        ///41;МО;44
+        ///1;МО;45
+        ///25;МО;46
+        ///5;МО;47
+        ///7;МО;49
+        ///5;МО;50
+        ///33;МО;51
+        ///32;МО;52
+        ///9;МО;53
+        ///7;МО;54
+        ///19;МО;55
+        ///4;МО;56
+        ///24;МО;59
+        ///10;М;101
+        ///10;М;102
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RA {
+            get {
+                return ResourceManager.GetString("RA", resourceCulture);
             }
         }
     }

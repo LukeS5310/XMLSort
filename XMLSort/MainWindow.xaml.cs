@@ -28,6 +28,7 @@ namespace XMLSort
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Globs.LoadRA();
             var Checker = new INIT.StartupFolderAnalyzer();
             Checker.Analyze(System.AppDomain.CurrentDomain.BaseDirectory);
             LBL_Status.Content = Checker.ReadableResult;
@@ -39,10 +40,7 @@ namespace XMLSort
 
         private void BTN_START_Click(object sender, RoutedEventArgs e)
         {
-            if (Globs.CurrentXMLPref == Globs.PrefferedXMLType.TYPE_UNDEFINED)
-            {
-                new Window1().Show();
-            }
+           
             INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
             TestGrabber.GetFiles();
         }

@@ -20,7 +20,7 @@ namespace XMLSort.FileTypes
                 Directory.CreateDirectory(RootPath);
             }
 
-            File.Move(PathToFile, Path.Combine(RootPath, Path.GetFileName(PathToFile))); //DAMN THIS IS BRAINFUCK
+            File.Move(PathToFile, Path.Combine(RootPath, Path.GetFileName(PathToFile))); //well not so brainfuck compared to things in xml class
         }
     }
 }
