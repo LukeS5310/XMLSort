@@ -15,7 +15,7 @@ namespace XMLSort.FileTypes
         {
             string OutPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OUT");
             string RootPath = Path.Combine(OutPath, RootFolder);
-            if (Directory.Exists(RootPath) == false);
+            if (Directory.Exists(RootPath) == false)
             {
                 Directory.CreateDirectory(RootPath);
             }

@@ -23,7 +23,7 @@ namespace XMLSort.FileTypes
         string UniversalPathToBank = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/НомерБанка";
         string UniversalPathToPril = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/СоставительПачки/РегистрационныйНомер";
         string UniversalPathToDate = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/Месяц";
-        string UniversalPathToRA = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/СистемныйНомерМассива";
+        
         private XMLType GetXMLType(string XMLFilePath)
         {
             try
@@ -55,8 +55,7 @@ namespace XMLSort.FileTypes
 
        private int GetXMLPril(string XMLFilePath)
         {
-            string resource_data = Properties.Resources.RA;
-            List<string> words = resource_data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+          
             int PriNum = 0;
             string stmp = XElement.Load(XMLFilePath).XPathSelectElement(UniversalPathToPril)?.Value ?? "";
             string[] Mstmp = stmp.Split('-');
@@ -102,8 +101,9 @@ namespace XMLSort.FileTypes
                     return "";
             }
         }
-        private void GetXMLDisGU(string XMLFilePath, ref int FGUNum, ref string FDis)
+        public static void GetXMLDisGU(string XMLFilePath, ref int FGUNum, ref string FDis) //have to access from elsewhere
         {
+            string UniversalPathToRA = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/СистемныйНомерМассива";
             string stmp = XElement.Load(XMLFilePath).XPathSelectElement(UniversalPathToRA)?.Value ?? "0";
             string[] data = stmp.Split('-');
             if (data.Length < 1) 

@@ -41,11 +41,11 @@ namespace XMLSort.LOGGING
 
             return string.Format("[{0}]", DateTime.Now.ToString("HH:mm:ss"));
         }
-        public string SaveLogFile(string Folder = null)
+        public string SaveLogFile(string Folder = null, bool forceSave = false)
         {
             if (Folder == null) Folder = System.AppDomain.CurrentDomain.BaseDirectory;
             string FileToSave = null;
-            if (ErrsFound > 0)
+            if (ErrsFound > 0 || forceSave == true)
             {
                 try
                 {

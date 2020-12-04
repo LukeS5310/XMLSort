@@ -54,7 +54,7 @@ namespace XMLSort.INIT
             }
             else //work with OUT x----D
             {
-                if (new DirectoryInfo(OUTDir).GetFiles().Length > 0) //OLD FILES DETECTED! MOVING TO ENGAGE
+                if (new DirectoryInfo(OUTDir).GetFiles().Length > 0 || new DirectoryInfo(OUTDir).GetDirectories().Length > 0) //OLD FILES DETECTED! MOVING TO ENGAGE
                 {
                     try
                     {

@@ -38,11 +38,16 @@ namespace XMLSort
             }
         }
 
-        private void BTN_START_Click(object sender, RoutedEventArgs e)
+        private async void BTN_START_Click(object sender, RoutedEventArgs e)
         {
-           
+            BTN_START.IsEnabled = false;
             INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
+            OUTPUT.ReportGenerator PostProcess = new OUTPUT.ReportGenerator();
             TestGrabber.GetFiles();
+            PostProcess.GenerateReport();
+            BTN_START.IsEnabled = true;
+            System.Windows.MessageBox.Show("Операция успешно выполнена!");
+            this.Close();
         }
 
         private void NUD_PartNum_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
