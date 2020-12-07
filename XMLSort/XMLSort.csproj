@@ -93,6 +93,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="OUTPUT\ReportGenerator.cs" />
+    <Compile Include="PROCESSING\SummProcessor.cs" />
     <Compile Include="XMLTypeQuerry.xaml.cs">
       <DependentUpon>XMLTypeQuerry.xaml</DependentUpon>
     </Compile>

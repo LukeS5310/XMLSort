@@ -7,18 +7,19 @@ using System.IO;
 using XMLSort.LOGGING;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using XMLSort.PROCESSING;
 
 namespace XMLSort.OUTPUT
 {
     class ReportGenerator
     {
         //TODO: REWORK, cause rn it counts summs per bank actually
-        private struct SummInfo
+        public struct SummInfo
         {
             public decimal Summ;
             public int GUNum;
-            public string RANum;
-            public SummInfo(int GUNum, string RANum, decimal Summ)
+            public int RANum;
+            public SummInfo(int GUNum, int RANum, decimal Summ)
             {
                 this.GUNum = GUNum;
                 this.RANum = RANum;
@@ -29,7 +30,9 @@ namespace XMLSort.OUTPUT
         private readonly string DefFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OUT");
         public void GenerateReport(string FolderPath = null)
         {
+            List<SummInfo> Summs = new List<SummInfo>();
             Logger CurrentLogger = new Logger();
+            
             if (FolderPath == null) FolderPath = DefFolder; // set to default
             DirectoryInfo[] InnerDirs = new DirectoryInfo(FolderPath).GetDirectories();
             
@@ -38,38 +41,34 @@ namespace XMLSort.OUTPUT
                 if (dir.Name == "Неопознанные файлы") continue;
              
                // int GUNum = GetGUNumFromFolder(dir.Name);
-                ReadXMLFilesInFolder(dir.GetFiles("*-SPIS-*"),CurrentLogger);
+                ReadXMLFilesInFolder(dir.GetFiles("*-SPIS-*"), Summs);
 
             }
+            var summProcessor = new SummProcessor(Summs);
+            CurrentLogger.WriteLogMsg(summProcessor.ProcessSumms());
             CurrentLogger.SaveLogFile(forceSave: true);
         }
        
-        private void ReadXMLFilesInFolder(FileInfo[] Files, Logger Logger)
+        private void ReadXMLFilesInFolder(FileInfo[] Files, List<SummInfo> Summs)
         {
-            System.Windows.MessageBox.Show(Files.Length.ToString());
+           
             int GUNum = -1;
-            string RANum = "";
-            List<SummInfo> Summs = new List<SummInfo>();
+            int RANum = -1;
+            string dis = "";
+            
             string SummPath = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/СуммаПоЧастиМассива";
+            string RaPath = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/СистемныйНомерМассива";
             foreach (FileInfo File in Files)
             {
                 decimal Summ = decimal.Parse(XElement.Load(File.FullName).XPathSelectElement(SummPath)?.Value.Replace(".",",") ?? "0");
-                FileTypes.FileTypeXML.GetXMLDisGU(File.FullName,ref GUNum,ref RANum);
+                FileTypes.FileTypeXML.GetXMLDisGU(File.FullName, ref GUNum, ref dis);
+                //TODO - GET RA
+                RANum = int.Parse(XElement.Load(File.FullName).XPathSelectElement(RaPath).Value.Split('-')[1]);
                 Summs.Add(new SummInfo(GUNum, RANum, Summ));
             }
             //stats built - time to analyze
-            Logger.WriteLogMsg(string.Format("Сумма по ГУ/УПФР № {0} : {1} руб.", GUNum, CountGUSumm(Summs)));
-
+           
         }
-        private decimal CountGUSumm(List<SummInfo> SummInfos)
-        {
-            decimal result = 0;
-            foreach (SummInfo SummInf in SummInfos)
-            {
-                result += SummInf.Summ;
-            }
-
-            return result;
-        }
+       
     }
 }

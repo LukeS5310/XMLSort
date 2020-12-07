@@ -19,7 +19,7 @@ namespace XMLSort.FileTypes
                 case ".ZIP":
                     return new FileTypeZIP();
                 default:
-                    System.Windows.MessageBox.Show(FileExtension);
+                   
                     return new FileTypeUnknown();
                     
             }
