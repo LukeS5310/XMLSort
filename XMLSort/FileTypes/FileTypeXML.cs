@@ -138,7 +138,12 @@ namespace XMLSort.FileTypes
                 case XMLType.TYPE_RAZ_UDER:
                     if (Globs.CurrentXMLPref == Globs.PrefferedXMLType.TYPE_UNDEFINED)
                     {
-                        new Window1().ShowDialog();
+                        
+                        System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
+                            new Window1().ShowDialog();
+                            // your code
+                        });
+                       
                     }
                     if (Globs.CurrentXMLPref == Globs.PrefferedXMLType.TYPE_RAZOV) FType = "РВ";
                     

@@ -43,11 +43,13 @@ namespace XMLSort
         private async void BTN_START_Click(object sender, RoutedEventArgs e)
         {
             BTN_START.IsEnabled = false;
-            INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
+            PB_Progress.IsIndeterminate = true;
+            INPUT.FileGrabber grabber = new INPUT.FileGrabber();
             OUTPUT.ReportGenerator PostProcess = new OUTPUT.ReportGenerator();
-            TestGrabber.GetFiles();
+            await Task.Run(() => grabber.GetFiles());
             await Task.Run(() => PostProcess.GenerateReport());
             BTN_START.IsEnabled = true;
+            PB_Progress.IsIndeterminate = false;
             System.Windows.MessageBox.Show("Операция успешно выполнена!");
             this.Close();
         }

@@ -32,12 +32,7 @@ namespace XMLSort.INIT
             }
             
             
-            if (new DirectoryInfo(INDir).GetFiles().Length == 0) //working with IN xddd
-            {
-                ReadyState = -1;
-                ReadableResult = "Нет файлов в папке IN!";
-                return;
-            }
+            
             
             if (Directory.Exists(OUTDir) == false)
             {
@@ -71,6 +66,12 @@ namespace XMLSort.INIT
 
                     }
                 }
+            }
+            if (new DirectoryInfo(INDir).GetFiles().Length == 0) //working with IN xddd
+            {
+                ReadyState = -1;
+                ReadableResult = "Нет файлов в папке IN!";
+                return;
             }
 
             ReadyState = 1;
