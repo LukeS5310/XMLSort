@@ -30,15 +30,15 @@ namespace XMLSort.INIT
                     return;
                 }
             }
-            else //working with IN xddd
+            
+            
+            if (new DirectoryInfo(INDir).GetFiles().Length == 0) //working with IN xddd
             {
-                if (new DirectoryInfo(INDir).GetFiles().Length == 0)
-                {
-                    ReadyState = -1;
-                    ReadableResult = "Нет файлов в папке IN!";
-                    return;
-                }
+                ReadyState = -1;
+                ReadableResult = "Нет файлов в папке IN!";
+                return;
             }
+            
             if (Directory.Exists(OUTDir) == false)
             {
                 try

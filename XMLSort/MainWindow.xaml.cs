@@ -26,11 +26,13 @@ namespace XMLSort
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Globs.LoadRA();
+            LBL_Status.Content = "Подготовка...";
+            await Task.Run(() => Globs.LoadRA());
+            // Globs.LoadRA()
             var Checker = new INIT.StartupFolderAnalyzer();
-            Checker.Analyze(System.AppDomain.CurrentDomain.BaseDirectory);
+            await Task.Run(() => Checker.Analyze(System.AppDomain.CurrentDomain.BaseDirectory));
             LBL_Status.Content = Checker.ReadableResult;
             if (Checker.ReadyState == 1)
             {
@@ -44,7 +46,7 @@ namespace XMLSort
             INPUT.FileGrabber TestGrabber = new INPUT.FileGrabber();
             OUTPUT.ReportGenerator PostProcess = new OUTPUT.ReportGenerator();
             TestGrabber.GetFiles();
-            PostProcess.GenerateReport();
+            await Task.Run(() => PostProcess.GenerateReport());
             BTN_START.IsEnabled = true;
             System.Windows.MessageBox.Show("Операция успешно выполнена!");
             this.Close();
