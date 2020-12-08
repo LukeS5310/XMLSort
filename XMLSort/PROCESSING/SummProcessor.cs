@@ -45,18 +45,23 @@ namespace XMLSort.PROCESSING
                     
                    // totalSumm += summInfo.Summ;
                 }
-
-                output.AppendLine(CountSummByBanks(group));
+                foreach (var dis in group.GroupBy(summInfo => summInfo.Dis))
+                {
+                    output.AppendLine(String.Format("{0}:", dis.Key));
+                    output.AppendLine(CountSummByBanks(dis));
+                }
+                
                 output.AppendLine(GetMissingRA(validationList));
             }
 
             return output.ToString();
         }
-        private string CountSummByBanks(IGrouping<int, ReportGenerator.SummInfo> inputGroup)
+        private string CountSummByBanks(IGrouping<string, ReportGenerator.SummInfo> inputGroup)
         {
             decimal totalSumm = 0;
             var result = new StringBuilder();
-            var resultsGroupedByBanks = inputGroup.GroupBy(summInfo => summInfo.BankName);
+            var resultsGroupedByBanks = inputGroup.GroupBy(summInfo => summInfo.BankCode);
+            
             foreach (var group in resultsGroupedByBanks)
             {
                 
@@ -65,7 +70,7 @@ namespace XMLSort.PROCESSING
                 {
                     totalSumm += summInfo.Summ;
                 }
-                result.AppendLine(String.Format("Сумма по {0} : {1} руб.", group.Key, string.Format("{0:#,##0.00}", totalSumm)));
+                result.AppendLine(String.Format("Сумма по ({0}) - {1} : {2} руб.", group.Key, group.ElementAt(0).BankName ?? "", string.Format("{0:#,##0.00}", totalSumm)));
             }
             return result.ToString();
         }
