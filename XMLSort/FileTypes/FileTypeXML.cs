@@ -55,15 +55,18 @@ namespace XMLSort.FileTypes
 
        private int GetXMLPril(string XMLFilePath)
         {
+
           
-            int PriNum = 0;
-            string stmp = XElement.Load(XMLFilePath).XPathSelectElement(UniversalPathToPril)?.Value ?? "";
-            string[] Mstmp = stmp.Split('-');
-            if (Mstmp.Length > 0)
-            {
-                PriNum = int.Parse(Mstmp[1]);
-            }
-            else PriNum = -1;
+            int PriNum = 32;
+            if (Globs.CurrentXMLPref == Globs.PrefferedXMLType.TYPE_UDER) PriNum = 36;
+
+                //string stmp = XElement.Load(XMLFilePath).XPathSelectElement(UniversalPathToPril)?.Value ?? "";
+                //string[] Mstmp = stmp.Split('-');
+                //if (Mstmp.Length > 0)
+                //{
+                //    PriNum = int.Parse(Mstmp[1]);
+                //}
+                //else PriNum = -1;
             return PriNum;
         }
         private string GetXMLMonth(string XMLFilePath)
