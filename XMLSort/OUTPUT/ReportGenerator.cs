@@ -19,10 +19,11 @@ namespace XMLSort.OUTPUT
             public decimal Summ;
             public int GUNum;
             public int RANum;
+            public int ManCount;
             public string Dis;
             public string BankName;
             public string BankCode;
-            public SummInfo(int GUNum, int RANum, decimal Summ,string Dis, string BankCode, string BankName)
+            public SummInfo(int GUNum, int RANum, decimal Summ,string Dis, string BankCode, string BankName, int ManCount)
             {
                 this.GUNum = GUNum;
                 this.RANum = RANum;
@@ -30,8 +31,10 @@ namespace XMLSort.OUTPUT
                 this.Dis = Dis;
                 this.BankName = BankName;
                 this.BankCode = BankCode;
+                this.ManCount = ManCount;
             }
         }
+        
         
         private readonly string DefFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OUT");
         public void GenerateReport(string FolderPath = null)
@@ -45,13 +48,14 @@ namespace XMLSort.OUTPUT
             foreach (DirectoryInfo dir in InnerDirs)
             {
                 if (dir.Name == "Неопознанные файлы") continue;
-             
-               // int GUNum = GetGUNumFromFolder(dir.Name);
-                ReadXMLFilesInFolder(dir.GetFiles("*-SPIS-*"), Summs);
+                var inFiles = dir.GetFiles("*-SPIS-*");
+                ReadXMLFilesInFolder(inFiles, Summs);
 
             }
             var summProcessor = new SummProcessor(Summs);
+            var manCounter = new ManCounter(Summs);
             CurrentLogger.WriteLogMsg(summProcessor.ProcessSumms());
+            CurrentLogger.WriteLogMsg(manCounter.ProcessManCount());
             CurrentLogger.SaveLogFile(forceSave: true);
         }
        
@@ -60,6 +64,7 @@ namespace XMLSort.OUTPUT
            
             int GUNum = -1;
             int RANum = -1;
+            int manCount = 0;
             string dis = "";
             string[] bankNameCode;
             
@@ -72,6 +77,7 @@ namespace XMLSort.OUTPUT
                 //TODO - GET RA
                 RANum = int.Parse(XElement.Load(File.FullName).XPathSelectElement(RaPath).Value.Split('-')[1]);
                 bankNameCode = GetBankName(File.FullName);
+                manCount = GetManCount(File.FullName);
                 switch (dis)
                 {
                     case "М":
@@ -84,7 +90,8 @@ namespace XMLSort.OUTPUT
                         dis = "Неизвестно";
                         break;
                 }
-                Summs.Add(new SummInfo(GUNum, RANum, Summ, dis, bankNameCode[0],bankNameCode[1]));
+                Summs.Add(new SummInfo(GUNum, RANum, Summ, dis, bankNameCode[0],bankNameCode[1],manCount));
+
             }
             //stats built - time to analyze
            
@@ -100,6 +107,10 @@ namespace XMLSort.OUTPUT
             if (isNameAppended == true) return new string[] {bankCode, bankName };
             else return new string[] { bankCode, "" };
         }
-       
+       private int GetManCount(string xmlPath)
+        {
+            string manCountPath = "ПачкаВходящихДокументов/СПИСОК_НА_ЗАЧИСЛЕНИЕ/КоличествоПолучателей";
+            return int.Parse(XElement.Load(xmlPath).XPathSelectElement(manCountPath)?.Value ?? "0");
+        }
     }
 }
