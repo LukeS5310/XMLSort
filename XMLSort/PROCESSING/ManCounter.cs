@@ -27,13 +27,16 @@ namespace XMLSort.PROCESSING
             //per RA
             stmp.AppendLine("Подсчет людей по Районам:");
             stmp.AppendLine(CountMenInGroups(SummInfos.GroupBy(summInfo => summInfo.RANum), "Район"));
+            //per bank
+            stmp.AppendLine("Подсчет людей по Банкам:");
+            stmp.AppendLine(CountMenInGroups(SummInfos.GroupBy(summInfo => summInfo.BankCode), "Код Банка"));
 
             return stmp.ToString();
         }
        private string CountMenInGroups<TProperty>(IEnumerable<IGrouping<TProperty, ReportGenerator.SummInfo>> inputGroups, string prePend)
         {
             var stmp = new StringBuilder();
-            int count = 0;
+            int count;
            
             foreach (var group in inputGroups)
             {

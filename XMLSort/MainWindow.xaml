@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XMLSort"
         mc:Ignorable="d"
-        Title="XML Sort 1.3 (10.12.2020)" Height="120" Width="240" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="data.png">
+        Title="XML Sort 1.3.1 (25.01.2021)" Height="120" Width="240" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="data.png">
     <Grid>
         <Button x:Name="BTN_START" Content="СТАРТ" Margin="0,40,0,-15" VerticalAlignment="Center" Width="75" HorizontalAlignment="Center" IsEnabled="False" Click="BTN_START_Click"/>
         <ProgressBar x:Name="PB_Progress" HorizontalAlignment="Center" Height="15" Margin="0,0,0,-2" VerticalAlignment="Center" Width="200"/>

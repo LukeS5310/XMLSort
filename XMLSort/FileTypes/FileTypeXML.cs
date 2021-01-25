@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using System.IO;
@@ -19,10 +15,9 @@ namespace XMLSort.FileTypes
             TYPE_UNKNOWN
               
         }
-        string UniversalPathToType = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/ТипМассиваПоручений";
-        string UniversalPathToBank = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/НомерБанка";
-        string UniversalPathToPril = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/СоставительПачки/РегистрационныйНомер";
-        string UniversalPathToDate = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/Месяц";
+        const string UniversalPathToType = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/ТипМассиваПоручений";
+        const string UniversalPathToBank = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/НомерБанка";
+        const string UniversalPathToDate = "ПачкаВходящихДокументов/ВХОДЯЩАЯ_ОПИСЬ/Месяц";
         
         private XMLType GetXMLType(string XMLFilePath)
         {
@@ -136,7 +131,7 @@ namespace XMLSort.FileTypes
                         
                         System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
                             new Window1().ShowDialog();
-                            // your code
+                           
                         });
                        
                     }

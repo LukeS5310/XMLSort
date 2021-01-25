@@ -58,7 +58,7 @@ namespace XMLSort.LOGGING
                 }
 
             }
-            return FileToSave; // Null if no errs present
+            return FileToSave; 
         }
 
     }
